@@ -14,6 +14,7 @@ if [ ! -f bin/ngrokd ]; then
     openssl req -new -key device.key -subj "/CN=$NGROK_DOMAIN" -out device.csr
     openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 5000
     cd /root/ngrok
+    openssl rand -base64 32 > bin/token
 
     cp certs/rootCA.pem assets/client/tls/ngrokroot.crt
 
@@ -21,16 +22,19 @@ if [ ! -f bin/ngrokd ]; then
     echo "Building server and client"
     echo "$SEPARATOR"
 
-    make release-server release-client
+    make release-server 
+    #release-client
 
     chmod +x bin/ngrokd
-    chmod +x bin/ngrok
+    #chmod +x bin/ngrok
 
 fi
 
 echo "$SEPARATOR"
 echo "Starting server"
 echo "$SEPARATOR"
+export AUTH_TOKEN=`cat bin/token`
+echo "auth_token: $AUTH_TOKEN"
 
 cp certs/rootCA.pem assets/client/tls/ngrokroot.crt
 bin/ngrokd -tlsKey=certs/device.key -tlsCrt=certs/device.crt -domain="${NGROK_DOMAIN}" -httpAddr=${HTTP_ADDR} -httpsAddr=${HTTPS_ADDR} -tunnelAddr=${TUNNEL_ADDR}

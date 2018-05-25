@@ -1,11 +1,13 @@
 ngrok:
     image: ypereirareis/ngrok
     hostname: ngrok
+    net: "host"
+    restart: unless-stopped
     volumes:
         - "./bin:/root/ngrok/bin"
         - "./certs:/root/ngrok/certs"
     environment:
-        NGROK_DOMAIN:
+        NGROK_DOMAIN: ngrok.lcas.group
     ports:
         - 8080:8080
         - 4443:4443

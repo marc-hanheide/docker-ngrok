@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-RUN git clone https://github.com/inconshreveable/ngrok.git /root/ngrok
+RUN git clone https://github.com/marc-hanheide/ngrok.git /root/ngrok
 
 RUN mkdir /root/ngrok/certs
 
