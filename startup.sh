@@ -23,10 +23,10 @@ if [ ! -f bin/ngrokd ]; then
     echo "$SEPARATOR"
 
     make release-server 
-    #release-client
+    make release-client
 
     chmod +x bin/ngrokd
-    #chmod +x bin/ngrok
+    chmod +x bin/ngrok
 
 fi
 

@@ -1,4 +1,4 @@
-FROM debian:8
+FROM debian:9
 
 MAINTAINER Yannick Pereira-Reis <yannick.pereira.reis@gmail.com>
 
