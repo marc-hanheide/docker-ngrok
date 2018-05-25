@@ -1,7 +1,7 @@
 ngrok:
     image: ypereirareis/ngrok
     hostname: ngrok
-    net: "host"
+    #net: "host"
     restart: unless-stopped
     volumes:
         - "./bin:/root/ngrok/bin"
