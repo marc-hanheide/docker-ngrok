@@ -6,10 +6,12 @@ ngrok:
     volumes:
         - "./bin:/root/ngrok/bin"
         - "./certs:/root/ngrok/certs"
+        - "/etc/letsencrypt:/etc/letsencrypt"
     environment:
         NGROK_DOMAIN: ngrok.lcas.group
     ports:
         - 8080:8080
         - 4443:4443
         - 4433:4433
+        - 8000-8050:8000-8050
         - 10000-10050:10000-10050
