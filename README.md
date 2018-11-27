@@ -1,3 +1,5 @@
+See https://gist.github.com/marc-hanheide/bffdd9d3701638e81d029f030cec5300 for letsencrypt setup
+
 # Docker Ngrok
 
 Docker image to run ngrok server and generate client
